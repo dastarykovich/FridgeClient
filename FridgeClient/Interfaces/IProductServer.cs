@@ -11,8 +11,9 @@ namespace FridgeClient.Interfaces
     [Header("Product-Agent", "RestEase")]
     public interface IProductServer
     {
+
         [Get("api/products")]
-        Task<IActionResult> GetProducts();
+        Task<IEnumerable<ProductDto>> GetProducts();
 
         [Get("api/products/{id}")]
         Task<IActionResult> GetProduct([Path] Guid id);
@@ -34,6 +35,6 @@ namespace FridgeClient.Interfaces
         Task<IActionResult> UpdateProduct([Path] Guid id, [Body] ProductForUpdateDto product);
 
         [Options("api/products")]
-        IActionResult GetFridgesOptions();
+        Task<IActionResult> GetFridgesOptions();
     }
 }
